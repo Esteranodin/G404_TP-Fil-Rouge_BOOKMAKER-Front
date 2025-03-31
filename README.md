@@ -1,4 +1,4 @@
-#BookMaker Front avec Next.js
+# BookMaker-Front avec Next.js
 
 ## Getting Started
 
