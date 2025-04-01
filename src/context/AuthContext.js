@@ -1,0 +1,1 @@
+// Gérez les tokens JWT dans un contexte d'authentification + cookie ou localStorage pour persister auth

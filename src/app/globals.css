@@ -1,26 +1,90 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #F9ECEC;
+  --background-logo: #F4F2F7;
+  --neutral-dark: #161616;
+  --neutral-grey: #343434;
+  --primary-green: #22AAA1;
+  --primary-yellow: #FFED65;
+  --primary-pink: #FF499E;
+  --card-green: #22AAA1 40%;
+  --card-pink: #FF499E 40%;
+  --card-linear-gradient: linear-gradient(-114deg, #22AAA1 27% 11%,  #22AAA1 13% 69%, #F5F5F5 100%);
 }
 
 body {
   background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--neutral-dark);
+  font-family: var(--font-roboto);
+}
+
+h1 {
+  font-family: var(--font-inter);
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 24px;
+  letter-spacing: 0.23em;
+}
+
+#title-header {
+  font-family: var(--font-inter);
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0.13em;
+}
+
+h2 {
+  font-family: var(--font-inter);
+  color: var(--neutral-grey);
+  font-weight: 800;
+  font-size: 48px;
+  letter-spacing: 0.9em;
+}
+
+h3 {
+  font-family: var(--font-roboto);
+  font-weight: 700;
+  font-size: 26px;
+}
+
+button {
+  font-family: var(--font-roboto);
+  font-weight: 500;
+  line-height: 16px;
+  font-variant: small-caps;
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-family: var(--font-inter);
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 24px;
+    letter-spacing: 0.23em;
+  }
+
+  #title-header {
+    font-family: var(--font-inter);
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.13em;
+  }
+
+  h2 {
+    font-family: var(--font-inter);
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 24px;
+    letter-spacing: 1px;
+  }
+
+  h3 {
+    font-family: var(--font-roboto);
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 16px;
+  }
 }
