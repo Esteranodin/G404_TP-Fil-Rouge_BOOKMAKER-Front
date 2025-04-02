@@ -20,10 +20,10 @@ export default function Footer() {
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6 text-primary">
               <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path>
             </svg>
-            <span className="ml-2 text-lg font-bold font-manrope">BookMarket</span>
+            <span className="ml-2 text-lg font-bold font-manrope">Bookmaker</span>
           </Link>
           <p className="mt-2 text-center text-sm text-muted-foreground md:text-left">
-            &copy; {new Date().getFullYear()} BookMarket. Tous droits réservés.
+            &copy; {new Date().getFullYear()} BookMaker. Tous droits réservés.
           </p>
         </div>
       </div>

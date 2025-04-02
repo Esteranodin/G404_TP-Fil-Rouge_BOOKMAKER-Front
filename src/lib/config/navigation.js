@@ -7,7 +7,7 @@ import instagramIcon from "../../../public/icon/instagram.svg";
 export const navItems = [
     { name: "Home", href: "/" },
     { name: "Mon compte", href: "/auth/dashboard" },
-    { name: "Mes livres", href: "/auth/books" },
+    { name: "Livres", href: "/books" },
     { name: "Mes ventes", href: "/auth/sales" },
 ];
 

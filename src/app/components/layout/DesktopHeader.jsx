@@ -3,7 +3,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import Navbar from "./Navbar"
-import { Button } from "../../../../@/components/ui/button"
+import { Button } from "../ui/button"
 import React from "react"
 
 const DesktopHeader = ({ logo, navItems, socialLinks, isLoggedIn, username }) => {

@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import Navbar from "./Navbar"
-import MenuBurger from "../ui/MenuBurger"
+import MenuBurger from "../ui/menu-burger"
 import { createPortal } from "react-dom"
 
 const MobileHeader = ({ logo, menuburger, closeIcon, slider, user, navItems, isLoggedIn, username }) => {

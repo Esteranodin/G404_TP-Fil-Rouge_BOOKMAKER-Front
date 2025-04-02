@@ -9,7 +9,7 @@ import MobileHeader from "./MobileHeader"
 import DesktopHeader from "./DesktopHeader"
 import { navItems, socialLinks } from "../../../lib/config/navigation";
 import { useState } from "react"
-// import { Button } from "../../../../@/components/ui/button"
+
 
 const Header = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false) // remplacer apr useAuth

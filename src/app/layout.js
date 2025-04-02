@@ -2,6 +2,8 @@ import { Inter, Roboto } from "next/font/google";
 import "./globals.css";
 import { Provider } from "../context/Provider";
 import Header from "./components/layout/Header";
+import Footer from "./components/layout/Footer";
+import CardBook from "./components/layout/CardBook";
 
 const roboto = Roboto({
   variable: "--font-roboto",
@@ -34,6 +36,8 @@ export default function RootLayout({ children }) {
           <Header />
           {children}
           <div id="portal-root"></div>
+      
+          <Footer />
         </Provider>
       </body>
     </html>
