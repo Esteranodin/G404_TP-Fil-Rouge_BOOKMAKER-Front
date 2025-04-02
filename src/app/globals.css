@@ -2,16 +2,30 @@
 
 :root {
   --background: #F9ECEC;
-  --background-logo: #F4F2F7;
+  --background-white: #F4F2F7;
   --neutral-dark: #161616;
   --neutral-grey: #343434;
   --primary-green: #22AAA1;
   --primary-yellow: #FFED65;
+  --bg-yellow:rgb(255,237,101, 69%);
   --primary-pink: #FF499E;
   --card-green: #22AAA1 40%;
   --card-pink: #FF499E 40%;
   --card-linear-gradient: linear-gradient(-114deg, #22AAA1 27% 11%,  #22AAA1 13% 69%, #F5F5F5 100%);
 }
+
+.bg-white {
+  background: var(--background-white);
+}
+
+.header-yellow {
+  background: var(--bg-yellow);
+}
+
+.text-green {
+  color: var(--primary-green);
+}
+
 
 body {
   background: var(--background);

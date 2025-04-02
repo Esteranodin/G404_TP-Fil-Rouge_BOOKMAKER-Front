@@ -7,6 +7,8 @@ import { useState } from "react";
 export function Provider({ children }) {
   const [queryClient] = useState(() => new QueryClient());
 
+  
+
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
       <QueryClientProvider client={queryClient}>

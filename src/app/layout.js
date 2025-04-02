@@ -1,6 +1,7 @@
 import { Inter, Roboto } from "next/font/google";
 import "./globals.css";
 import { Provider } from "../context/Provider";
+import Header from "./components/layout/Header";
 
 const roboto = Roboto({
   variable: "--font-roboto",
@@ -30,7 +31,9 @@ export default function RootLayout({ children }) {
         className={`${roboto.variable} ${inter.variable} antialiased`}
       >
         <Provider>
+          <Header />
           {children}
+          <div id="portal-root"></div>
         </Provider>
       </body>
     </html>
