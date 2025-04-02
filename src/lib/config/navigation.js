@@ -1,3 +1,8 @@
+// Import des icônes
+import facebookIcon from "../../../public/icon/facebook.svg";
+import twitterIcon from "../../../public/icon/twitter.svg";
+import instagramIcon from "../../../public/icon/instagram.svg";
+
 // Éléments du menu principal
 export const navItems = [
     { name: "Home", href: "/" },
@@ -6,21 +11,21 @@ export const navItems = [
     { name: "Mes ventes", href: "/auth/sales" },
 ];
 
-// Liens des réseaux sociaux
+// Liens réseaux sociaux
 export const socialLinks = [
     { 
         name: "Facebook", 
         href: "https://www.facebook.com",
-        icon: "/icon/facebook.svg" 
+        icon: facebookIcon
     },
     { 
         name: "Twitter", 
         href: "https://www.twitter.com",
-        icon: "/icon/twitter.svg"
+        icon: twitterIcon
     },
     { 
         name: "Instagram", 
         href: "https://www.instagram.com",
-        icon: "/icon/instagram.svg"
+        icon: instagramIcon
     },
 ];

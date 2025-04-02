@@ -22,6 +22,10 @@
   background: var(--bg-yellow);
 }
 
+.button-pink {
+  background: var(--background-white);
+}
+
 .text-green {
   color: var(--primary-green);
 }
@@ -65,9 +69,18 @@ h3 {
 
 button {
   font-family: var(--font-roboto);
-  font-weight: 500;
+  color: var(--background-white);
+  font-weight: 700;
+  letter-spacing: 0.3em;
   line-height: 16px;
   font-variant: small-caps;
+}
+
+.button-pink {
+  background: var(--primary-pink);
+}
+.button-pink:hover {
+  background: var(--primary-green);
 }
 
 @media (max-width: 768px) {

@@ -1,6 +1,8 @@
 "use client"
 
 import Link from "next/link"
+import { cn } from "../../../lib/utils"
+import React from "react"
 
 const Navbar = ({ 
   navItems, 
@@ -10,16 +12,24 @@ const Navbar = ({
 }) => {
   
   return (
-    <nav className={`flex ${orientation === "vertical" ? "flex-col gap-4" : "gap-6"} ${className}`}>
+    <nav className={cn(
+      "flex",
+      orientation === "vertical" ? "flex-col gap-4" : "items-center",
+      className
+    )}>
       {navItems.map((item, index) => (
-        <Link 
-          key={index} 
-          href={item.href}
-          className="text-neutral-grey hover:text-primary-green transition-colors duration-200"
-          onClick={onItemClick}
-        >
-          {item.name}
-        </Link>
+        <React.Fragment key={index}>
+          {index > 0 && orientation === "horizontal" && (
+            <div className="h-5 w-px bg-neutral-grey mx-4"></div>
+          )}
+          <Link 
+            href={item.href}
+            className="text-neutral-grey hover:text-primary-green transition-colors duration-200 uppercase"
+            onClick={onItemClick}
+          >
+            {item.name}
+          </Link>
+        </React.Fragment>
       ))}
     </nav>
   )
