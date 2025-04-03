@@ -1,7 +1,8 @@
 import { Inter, Roboto } from "next/font/google";
 import "./globals.css";
-import Navbar from "./components/layout/Navbar";
-import MobileHeader from "./components/layout/MobileHeader";
+import { Provider } from "@/context/Provider";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
 
 
 const roboto = Roboto({
@@ -31,10 +32,13 @@ export default function RootLayout({ children }) {
       <body
         className={`${roboto.variable} ${inter.variable} antialiased`}
       >
-<MobileHeader/>
+        <Provider>
+          <Header />
           {children}
-
-
+          <div id="portal-root"></div>
+      
+          <Footer />
+        </Provider>
       </body>
     </html>
   );
