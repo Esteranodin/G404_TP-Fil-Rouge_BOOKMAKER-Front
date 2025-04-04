@@ -1,44 +1,51 @@
-import Link from "next/link";
-import Image from "next/image";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { formatPrice } from "@/lib/utils/formatters";
+import Image from 'next/image';
+import Link from 'next/link';
+import { extractIdFromIri } from '@/lib/utils/normalizeData';
+import { formatPrice } from '@/lib/utils/formatters';
 
 export default function CardBook({ book }) {
+  // Extraction des données avec gestion API Platform
+  const bookId = book.id || extractIdFromIri(book['@id']);
+  const title = book.title || 'Titre inconnu';
+  const price = book.price ? formatPrice(parseFloat(book.price)) : 'Prix non défini';
+  const coverImage = book.coverImage || '/img/placeholder-book.jpg';
+
   return (
-    <Link href={`/books/${book.id}`}>
-      <Card className="overflow-hidden h-full transition-all hover:shadow-md">
-        <div className="aspect-[2/3] relative overflow-hidden">
-          <Image
-            src={book.coverImage || "/images/placeholder-book.jpg"}
-            alt={book.title}
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            priority={false}
-          />
+    <div className="group rounded-lg border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
+      {/* Zone image avec fallback */}
+      <div className="relative h-48 bg-gray-100 overflow-hidden">
+
+        <Image
+          src={coverImage}
+          alt={`Couverture de ${title}`}
+          fill
+          sizes="(max-width: 768px) 100vw, 250px"
+          className="object-cover group-hover:scale-105 transition-transform duration-300"
+          priority={false}
+        />
+      </div>
+
+      {/* Contenu */}
+      <div className="p-4">
+        <h3 className="font-bold text-lg mb-1 truncate">{title}</h3>
+
+        <div className="text-sm text-gray-600 mb-2 space-y-1">
+          {book.isbn && <p className="truncate">ISBN: {book.isbn}</p>}
+          {book.parutionAt && <p>Année: {book.parutionAt}</p>}
+          {book.publisher && <p className="truncate">Éditeur: {book.publisher}</p>}
         </div>
-        <CardContent className="p-4">
-          <h3 className="text-lg font-bold line-clamp-1 mb-1">{book.title}</h3>
-          <p className="text-sm text-muted-foreground mb-2">{book.author}</p>
-          <div className="flex gap-2 flex-wrap mb-2">
-            {book.categories?.map((category) => (
-              <Badge key={category.id} variant="secondary" className="text-xs">
-                {category.name}
-              </Badge>
-            ))}
-          </div>
-          <p className="text-sm line-clamp-2 text-muted-foreground">
-            {book.description}
-          </p>
-        </CardContent>
-        <CardFooter className="p-4 pt-0 flex justify-between items-center">
-          <p className="font-bold text-primary">{formatPrice(book.price)}</p>
-          <Badge variant="outline" className={book.stock > 0 ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100" : "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-100"}>
-            {book.stock > 0 ? "En stock" : "Épuisé"}
-          </Badge>
-        </CardFooter>
-      </Card>
-    </Link>
+
+        <div className="mt-3 flex justify-between items-center">
+          <span className="font-semibold text-primary-green">{price}</span>
+
+          <Link
+            href={`/books/${bookId}`}
+            className="px-3 py-1 bg-primary-green text-white rounded hover:bg-green-700 transition-colors"
+          >
+            Détails
+          </Link>
+        </div>
+      </div>
+    </div>
   );
 }

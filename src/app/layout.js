@@ -3,6 +3,7 @@ import "./globals.css";
 import { Provider } from "@/context/Provider";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import BooksContainer from "@/components/books/BooksContainer";
 
 
 const roboto = Roboto({
@@ -36,7 +37,7 @@ export default function RootLayout({ children }) {
           <Header />
           {children}
           <div id="portal-root"></div>
-      
+
           <Footer />
         </Provider>
       </body>

@@ -7,7 +7,7 @@ import Navbar from "./Navbar"
 import MenuBurger from "@/components/ui/menu-burger"
 import { createPortal } from "react-dom"
 
-const MobileHeader = ({ logo, menuburger, closeIcon, slider, user, navItems, isLoggedIn, username }) => {
+const MobileHeader = ({ logo, menuburger, closeIcon, slider, userIcon, navItems, isLoggedIn, username }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const menuRef = useRef(null)
     const [isMounted, setIsMounted] = useState(false)
@@ -75,7 +75,7 @@ const MobileHeader = ({ logo, menuburger, closeIcon, slider, user, navItems, isL
                         </div>
                     ) : (
                         <Link href="/auth/login">
-                            <Image src={user} alt="Connexion" className="w-8" />
+                            <Image src={userIcon} alt="Connexion" className="w-8" />
                         </Link>
                     )}
                 </div>

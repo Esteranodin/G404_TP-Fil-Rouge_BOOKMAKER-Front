@@ -1,46 +1,45 @@
 import axios from 'axios';
 
-// Récupération de l'URL de l'API depuis les variables d'environnement
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
+const createApiClient = () => {
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
+  
+  // Configuration de base pour axios
+  const client = axios.create({
+    baseURL: API_URL,
+    headers: {
+      'Content-Type': 'application/ld+json',
+      'Accept': 'application/ld+json'
+    },
+  });
 
-// Création d'une instance axios avec une configuration de base
-const apiClient = axios.create({
-  baseURL: API_URL,
-  headers: {
-    'Content-Type': 'application/ld+json',
-  },
-});
+  // Intercepteur pour les requêtes
+  client.interceptors.request.use(
+    (config) => {
+      // Gestion du token d'authentification
+      const token = localStorage.getItem('token');
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+      }
+      return config;
+    },
+    (error) => Promise.reject(error)
+  );
 
-// Ajoutez ces logs pour déboguer
-
-// Intercepteur pour les requêtes
-apiClient.interceptors.request.use(
-  (config) => {
-    const token = localStorage.getItem('token');
-    console.log("Envoi requête API:", config.url, "avec token:", token ? "présent" : "absent");
-    
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
+  // Intercepteur pour les réponses
+  client.interceptors.response.use(
+    (response) => response,
+    (error) => {
+      if (error.response?.status === 401) {
+        localStorage.removeItem('token');
+        // En production, vous pourriez rediriger vers la page de connexion
+      }
+      return Promise.reject(error);
     }
-    return config;
-  },
-  (error) => {
-    console.error("Erreur requête API:", error);
-    return Promise.reject(error);
-  }
-);
+  );
 
-// Intercepteur pour les réponses
-apiClient.interceptors.response.use(
-  (response) => {
-    console.log("Réponse API:", response.config.url, response.status);
-    return response;
-  },
-  (error) => {
-    console.error("Erreur réponse API:", 
-      error.response ? `${error.response.status} - ${error.response.config.url}` : error.message);
-    return Promise.reject(error);
-  }
-);
+  return client;
+};
+
+const apiClient = createApiClient();
 
 export default apiClient;
