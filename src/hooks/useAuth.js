@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { AuthContext } from '@/context/AuthContext';
 import { useMutation } from '@tanstack/react-query';
+import AuthService from '@/lib/services/authService';
 
 export function useAuth() {
   const context = useContext(AuthContext);
@@ -10,21 +11,34 @@ export function useAuth() {
   return context;
 }
 
-// Ajoutez ces logs pour déboguer
 export function useLogin() {
-  const mutation = useMutation({
-    mutationFn: async (credentials) => {
-      console.log("Tentative de connexion avec:", credentials);
-      try {
-        const result = await AuthService.login(credentials);
-        console.log("Réponse connexion:", result);
-        return result;
-      } catch (error) {
-        console.error("Erreur connexion:", error);
-        throw error;
-      }
+  return useMutation({
+    mutationFn: async ({ email, password }) => {
+      return await AuthService.login(email, password);
     }
   });
-  
-  return mutation;
+}
+
+export function useRegister() {
+  return useMutation({
+    mutationFn: async (userData) => {
+      return await AuthService.register(userData);
+    }
+  });
+}
+
+export function useLogout() {
+  return useMutation({
+    mutationFn: () => {
+      return AuthService.logout();
+    }
+  });
+}
+
+export function useCurrentUser() {
+  return useMutation({
+    mutationFn: async () => {
+      return await AuthService.getCurrentUser();
+    }
+  });
 }

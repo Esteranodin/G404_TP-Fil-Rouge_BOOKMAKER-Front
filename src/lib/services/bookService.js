@@ -1,6 +1,6 @@
 import apiClient from '@/lib/api/client';
 import { API_ENDPOINTS } from '@/lib/api/endpoints';
-import { formatApiError } from '../utils/errorHandling';
+import { handleApiError } from '../utils/errorHandling';
 
 
 class BookServiceClass {
@@ -75,7 +75,7 @@ class BookServiceClass {
       const response = await apiClient.get(endpoint, options);
       return response.data;
     } catch (error) {
-     throw formatApiError(error);
+     throw handleApiError(error);
     }
       };
 }

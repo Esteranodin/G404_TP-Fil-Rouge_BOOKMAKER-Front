@@ -1,9 +1,9 @@
 import { Inter, Roboto } from "next/font/google";
 import "./globals.css";
 import { Provider } from "@/context/Provider";
+import { Toaster } from "react-hot-toast";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import BooksContainer from "@/components/books/BooksContainer";
 
 
 const roboto = Roboto({
@@ -37,7 +37,7 @@ export default function RootLayout({ children }) {
           <Header />
           {children}
           <div id="portal-root"></div>
-
+          <Toaster position="top-right" />
           <Footer />
         </Provider>
       </body>

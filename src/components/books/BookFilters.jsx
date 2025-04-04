@@ -35,7 +35,7 @@ export default function BookFilters({ categories = [], activeFilters = {}, onFil
         />
         <button 
           type="submit"
-          className="px-4 py-2 bg-primary-green text-white rounded hover:bg-green-700 transition-colors"
+          className="px-4 py-2 button-green text-white rounded transition-colors"
         >
           Rechercher
         </button>
@@ -45,7 +45,7 @@ export default function BookFilters({ categories = [], activeFilters = {}, onFil
       {Array.isArray(categories) && categories.length > 0 && (
         <div className="flex flex-wrap gap-2">
           <button 
-            className={`px-3 py-1 rounded ${!activeFilters.category ? 'bg-primary-green text-white' : 'bg-gray-200 hover:bg-gray-300'}`}
+            className={`px-3 py-1 rounded ${!activeFilters.category ? 'button-pink  text-white' : 'button-green  hover:bg-gray-300'}`}
             onClick={() => handleCategoryChange('all')}
           >
             Toutes les catégories
@@ -57,7 +57,7 @@ export default function BookFilters({ categories = [], activeFilters = {}, onFil
             return (
               <button
                 key={categoryId}
-                className={`px-3 py-1 rounded ${activeFilters.category === categoryId ? 'bg-primary-green text-white' : 'bg-gray-200 hover:bg-gray-300'}`}
+                className={`px-3 py-1 rounded ${activeFilters.category === categoryId ? 'button-pink text-white' : 'button-green  hover:bg-gray-300'}`}
                 onClick={() => handleCategoryChange(categoryId)}
               >
                 {categoryName}

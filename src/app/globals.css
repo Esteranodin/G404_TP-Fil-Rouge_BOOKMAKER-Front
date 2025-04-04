@@ -23,7 +23,11 @@
 }
 
 .button-pink {
-  background: var(--background-white);
+  background: var(--primary-pink);
+}
+
+.button-green {
+  background: var(--primary-green);
 }
 
 .text-green {
