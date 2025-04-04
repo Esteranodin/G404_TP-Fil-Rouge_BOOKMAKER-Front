@@ -74,7 +74,7 @@ const MobileHeader = ({ logo, menuburger, closeIcon, slider, userIcon, navItems,
                             </div>
                         </div>
                     ) : (
-                        <Link href="/auth/login">
+                        <Link href="/login">
                             <Image src={userIcon} alt="Connexion" className="w-8" />
                         </Link>
                     )}
